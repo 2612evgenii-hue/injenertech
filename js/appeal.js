@@ -34,7 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!submitBtn) return;
         submitBtn.disabled = isLoading;
         submitBtn.textContent = isLoading ? 'Отправляем…' : 'Отправить';
-        submitBtn.style.opacity = isLoading ? '0.7' : '1';
+        
+        if (isLoading) {
+            submitBtn.classList.add('loading');
+            submitBtn.style.opacity = '1';
+        } else {
+            submitBtn.classList.remove('loading');
+            submitBtn.style.opacity = '1';
+        }
     }
 
     // Инициализация EmailJS
@@ -49,6 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (errorBox) {
                 errorBox.textContent = 'Проверьте корректность заполнения полей.';
                 errorBox.style.display = 'block';
+                errorBox.classList.add('appeal-error');
+                // Убираем класс анимации через время
+                setTimeout(() => errorBox.classList.remove('appeal-error'), 500);
             }
             return;
         }
@@ -59,6 +69,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (errorBox) {
                 errorBox.textContent = 'Форма временно недоступна. Попробуйте позже.';
                 errorBox.style.display = 'block';
+                errorBox.classList.add('appeal-error');
+                setTimeout(() => errorBox.classList.remove('appeal-error'), 500);
             }
             return;
         }
@@ -70,13 +82,24 @@ document.addEventListener('DOMContentLoaded', function() {
             // Используем sendForm: EmailJS сам возьмет значения из инпутов по name
             await emailjs.sendForm(serviceId, templateId, form);
 
-            form.style.display = 'none';
-            if (success) success.style.display = 'block';
+            // Анимация исчезновения формы
+            form.classList.add('appeal-form-disappearing');
+            
+            setTimeout(() => {
+                form.style.display = 'none';
+                if (success) {
+                    success.style.display = 'block';
+                    success.classList.add('appeal-success', 'appeal-message-appearing');
+                }
+            }, 400); // Ждем завершения анимации исчезновения
+            
         } catch (err) {
             if (errorBox) {
                 const details = (err && (err.text || err.message)) ? ` (${err.text || err.message})` : '';
                 errorBox.textContent = 'Не удалось отправить. Попробуйте позже.' + details;
                 errorBox.style.display = 'block';
+                errorBox.classList.add('appeal-error', 'appeal-message-appearing');
+                setTimeout(() => errorBox.classList.remove('appeal-error'), 500);
             }
         } finally {
             setLoading(false);

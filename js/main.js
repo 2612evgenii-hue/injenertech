@@ -62,13 +62,18 @@ if (burger && nav) {
 const scrollTopBtn = document.querySelector('.scroll-top');
 
 if (scrollTopBtn) {
-    // Показать кнопку при прокрутке вниз
+    let scrollTimeout;
+    // Показать кнопку при прокрутке вниз (с throttling)
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            scrollTopBtn.classList.add('visible');
-        } else {
-            scrollTopBtn.classList.remove('visible');
-        }
+        if (scrollTimeout) return;
+        scrollTimeout = setTimeout(() => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+            scrollTimeout = null;
+        }, 10);
     });
     // Плавный скролл наверх
     scrollTopBtn.addEventListener('click', () => {
@@ -76,12 +81,19 @@ if (scrollTopBtn) {
     });
 }
 
-// ========== Параллакс-анимация для блока hero (по желанию) ==========
+// ========== Упрощенный параллакс-эффект ==========
 const hero = document.querySelector('.hero');
 if (hero) {
+    let parallaxTimeout;
     window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        hero.style.backgroundPosition = `center ${scrolled * 0.2}px`;
+        if (parallaxTimeout) return;
+        parallaxTimeout = setTimeout(() => {
+            const scrolled = window.scrollY;
+            if (scrolled < 500) { // Ограничиваем параллакс только для верхней части
+                hero.style.backgroundPosition = `center ${scrolled * 0.1}px`;
+            }
+            parallaxTimeout = null;
+        }, 16); // ~60fps
     });
 }
 
@@ -116,18 +128,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ========== АНИМАЦИИ ПРИ ПРОКРУТКЕ ==========
+// ========== АНИМАЦИИ ПРИ ПРОКРУТКЕ (оптимизированные) ==========
+let animationTimeout;
+let isAnimating = false;
+
 function animateOnScroll() {
-    const elements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
+    if (animationTimeout || isAnimating) return;
     
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150; // Расстояние от верха экрана для активации
+    animationTimeout = setTimeout(() => {
+        isAnimating = true;
         
-        if (elementTop < window.innerHeight - elementVisible) {
-            element.classList.add('visible');
+        const elements = document.querySelectorAll('.fade-in:not(.visible), .slide-in-left:not(.visible), .slide-in-right:not(.visible), .scale-in:not(.visible)');
+        
+        if (elements.length === 0) {
+            isAnimating = false;
+            animationTimeout = null;
+            return;
         }
-    });
+        
+        elements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+            const elementVisible = 80; // Расстояние для активации
+            
+            if (rect.top < window.innerHeight - elementVisible && rect.bottom > 0) {
+                // Добавляем небольшую задержку для более интересного эффекта
+                setTimeout(() => {
+                    element.classList.add('visible');
+                }, Math.random() * 100);
+            }
+        });
+        
+        isAnimating = false;
+        animationTimeout = null;
+    }, 16); // ~60fps
 }
 
 // Запускаем анимации при загрузке и прокрутке

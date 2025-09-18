@@ -64,13 +64,15 @@ body {
     color: #222;
     font-weight: 500;
     font-size: 1rem;
-    transition: color 0.2s;
+    transition: color 0.2s ease-out, background 0.2s ease-out, transform 0.2s ease-out;
     padding: 6px 10px;
     border-radius: 6px;
+    will-change: color, background, transform;
 }
 .nav__list a:hover, .nav__list a:focus {
     color: #0057b8;
     background: #f2f4f8;
+    transform: translateY(-1px);
 }
 .nav__list a.active {
     color: #fff;
@@ -118,9 +120,10 @@ body {
 }
 .burger.active span:nth-child(2) {
     opacity: 0;
+    transform: scale(0);
 }
 .burger.active span:nth-child(3) {
-    transform: translateY(-13.5px) rotate(-45deg);
+    transform: translateY(-13.7px) rotate(-45deg);
 }
 
 /* ================== ГЛАВНЫЙ КОНТЕНТ ================== */
@@ -160,7 +163,7 @@ main {
     text-align: center;
     max-width: 700px;
     margin: 0 auto;
-    animation: fadeInUp 1.2s cubic-bezier(.23,1.01,.32,1) both;
+    animation: heroFadeIn 1.2s ease-out both;
 }
 .hero__content h1 {
     font-size: 3rem;
@@ -171,9 +174,15 @@ main {
     font-size: 1.5rem;
     font-weight: 400;
 }
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to   { opacity: 1; transform: none; }
+@keyframes heroFadeIn {
+    0% { 
+        opacity: 0; 
+        transform: translateY(30px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
 /* ========== Блок: Электронное обращение ========== */
@@ -192,10 +201,13 @@ main {
     font-size: 1.1rem;
     font-weight: 600;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: background 0.3s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    will-change: background, transform, box-shadow;
 }
 .appeal__button:hover {
     background: #003a75;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,87,184,0.3);
 }
 
 /* ========== Блок: Наши функции ========== */
@@ -224,11 +236,12 @@ main {
     flex-direction: column;
     align-items: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    transition: box-shadow 0.2s, transform 0.2s;
+    transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
+    will-change: box-shadow, transform;
 }
 .function-card:hover {
-    box-shadow: 0 4px 16px rgba(0,87,184,0.08);
-    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(0,87,184,0.15);
+    transform: translateY(-3px);
 }
 .function-card__icon {
     font-size: 2.2rem;
@@ -333,12 +346,14 @@ main {
     box-shadow: 0 2px 8px rgba(0,0,0,0.12);
     cursor: pointer;
     z-index: 1200;
-    transition: background 0.2s, opacity 0.2s;
+    transition: background 0.2s ease-out, opacity 0.2s ease-out, transform 0.2s ease-out;
     opacity: 0.85;
+    will-change: background, opacity, transform;
 }
 .scroll-top:hover {
     background: #003a75;
     opacity: 1;
+    transform: translateY(-2px);
 }
 .scroll-top.visible {
     display: flex;
@@ -377,7 +392,7 @@ main {
         background: #fff;
         z-index: 2000;
         box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-        animation: menuFadeIn 0.3s cubic-bezier(.4,0,.2,1);
+        animation: menuFadeIn 0.2s ease-out;
         justify-content: center;
         gap: 32px;
     }
@@ -400,8 +415,14 @@ main {
     }
 }
 @keyframes menuFadeIn {
-    from { opacity: 0; transform: translateY(-30px); }
-    to   { opacity: 1; transform: none; }
+    0% { 
+        opacity: 0; 
+        transform: translateY(-20px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 @media (max-width: 700px) {
     .header {
@@ -459,11 +480,17 @@ main {
         padding: 32px 0 24px 0;
         box-shadow: 0 4px 24px rgba(0,0,0,0.08);
         z-index: 1050;
-        animation: menuFadeIn 0.25s;
+        animation: menuFadeIn 0.2s ease-out;
     }
     @keyframes menuFadeIn {
-        from { opacity: 0; transform: translateY(-20px); }
-        to   { opacity: 1; transform: none; }
+        0% { 
+            opacity: 0; 
+            transform: translateY(-15px); 
+        }
+        100% { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
     }
     .nav__list {
         flex-direction: column;
@@ -558,11 +585,12 @@ main {
     color: #222;
     cursor: pointer;
     z-index: 2100;
-    transition: color 0.2s, transform 0.2s;
+    transition: color 0.2s ease-out, transform 0.2s ease-out;
+    will-change: color, transform;
 }
 .nav__close:hover {
     color: #0057b8;
-    transform: scale(1.15) rotate(90deg);
+    transform: scale(1.1) rotate(90deg);
 }
 @media (max-width: 900px) {
     .nav__close {
@@ -594,11 +622,12 @@ main {
     }
 }
 
-/* ========== АНИМАЦИИ ПРИ ПРОКРУТКЕ ================== */
+/* ========== ИНТЕРЕСНЫЕ АНИМАЦИИ ПРИ ПРОКРУТКЕ ================== */
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    will-change: opacity, transform;
 }
 
 .fade-in.visible {
@@ -608,8 +637,9 @@ main {
 
 .slide-in-left {
     opacity: 0;
-    transform: translateX(-50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateX(-30px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    will-change: opacity, transform;
 }
 
 .slide-in-left.visible {
@@ -619,8 +649,9 @@ main {
 
 .slide-in-right {
     opacity: 0;
-    transform: translateX(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateX(30px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    will-change: opacity, transform;
 }
 
 .slide-in-right.visible {
@@ -630,8 +661,9 @@ main {
 
 .scale-in {
     opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    will-change: opacity, transform;
 }
 
 .scale-in.visible {

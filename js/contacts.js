@@ -2,31 +2,25 @@
 // Позволяет раскрывать и сворачивать блоки, а также анимировать стрелку и плавно раздвигать
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Аккордеон для графиков работы
-    document.querySelectorAll('.accordion__header').forEach(function(btn) {
+    const headers = Array.from(document.querySelectorAll('.accordion__header'));
+
+    headers.forEach((btn) => {
         btn.addEventListener('click', function() {
-            const expanded = btn.getAttribute('aria-expanded') === 'true';
+            const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
             // Закрыть все
-            document.querySelectorAll('.accordion__header').forEach(function(otherBtn) {
-                otherBtn.setAttribute('aria-expanded', 'false');
-                if (otherBtn.nextElementSibling) {
-                    otherBtn.nextElementSibling.style.maxHeight = null;
-                }
+            headers.forEach((other) => {
+                other.setAttribute('aria-expanded', 'false');
+                const body = other.nextElementSibling;
+                if (body) body.style.maxHeight = '0px';
             });
-            // Открыть выбранный
-            if (!expanded) {
+
+            // Открыть выбранный, если был закрыт
+            if (!isExpanded) {
                 btn.setAttribute('aria-expanded', 'true');
                 const body = btn.nextElementSibling;
-                if (body) {
-                    body.style.maxHeight = body.scrollHeight + 'px';
-                }
+                if (body) body.style.maxHeight = body.scrollHeight + 'px';
             }
-        });
-    });
-    // Сброс maxHeight при ресайзе окна
-    window.addEventListener('resize', () => {
-        document.querySelectorAll('.accordion__header[aria-expanded="true"] + .accordion__body').forEach(body => {
-            body.style.maxHeight = body.scrollHeight + 'px';
-        });
+        }, { passive: true });
     });
 });
