@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/appeal.css">
     <script defer src="js/main.js"></script>
+    <!-- EmailJS SDK -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script defer src="js/appeal.js"></script>
 </head>
 <body>
@@ -35,7 +37,10 @@
     <main>
         <section class="appeal-form main-block fade-in">
             <h1>Электронное обращение</h1>
-            <form id="appealForm" action="https://formspree.io/f/xdoqzqzv" method="POST" autocomplete="off" class="scale-in">
+            <form id="appealForm" autocomplete="off" class="scale-in"
+                  data-emailjs-public-key="e98YofCtkckXTTlgx"
+                  data-emailjs-service-id="service_g2x6poa"
+                  data-emailjs-template-id="template_i6x7934">
                 <label>
                     ФИО*
                     <input type="text" name="fio" required>
@@ -56,9 +61,11 @@
                     Сообщение*
                     <textarea name="message" required rows="4"></textarea>
                 </label>
-                <button type="submit">Отправить</button>
+                <input type="hidden" name="date" id="currentDate">
+                <button id="submitBtn" type="submit">Отправить</button>
             </form>
             <div id="appealSuccess" style="display:none; text-align:center; margin-top:24px; color:green;">Ваше обращение отправлено!</div>
+            <div id="appealError" style="display:none; text-align:center; margin-top:24px; color:#b00020;">Не удалось отправить. Попробуйте позже.</div>
         </section>
     </main>
     <footer class="footer">

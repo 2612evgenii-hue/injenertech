@@ -1,13 +1,22 @@
-// appeal.js — логика формы обращения
-// Валидация, mailto, показ сообщения об успехе
+// appeal.js — логика формы обращения через EmailJS
+// Валидация, отправка через EmailJS, состояния загрузки/успеха/ошибки
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('appealForm');
     const success = document.getElementById('appealSuccess');
+    const errorBox = document.getElementById('appealError');
+    const submitBtn = document.getElementById('submitBtn');
     if (!form) return;
+
+    // Устанавливаем текущую дату в скрытое поле
+    const dateField = document.getElementById('currentDate');
+    if (dateField) {
+        dateField.value = new Date().toLocaleString('ru-RU');
+    }
+
     const requiredFields = Array.from(form.querySelectorAll('input, textarea'));
 
-    function checkValid() {
+    function isFormValid() {
         let valid = true;
         requiredFields.forEach(field => {
             if (!field.value.trim()) valid = false;
@@ -18,33 +27,59 @@ document.addEventListener('DOMContentLoaded', function() {
                 valid = valid && field.value.replace(/\D/g, '').length >= 7;
             }
         });
-        // The submit button is disabled by default, so we don't need to re-enable it here
-        // unless the form is submitted successfully, in which case it will be re-enabled
-        // by the success message display.
+        return valid;
     }
-    form.addEventListener('input', checkValid);
-    form.addEventListener('change', checkValid);
-    form.addEventListener('submit', function(e) {
+
+    function setLoading(isLoading) {
+        if (!submitBtn) return;
+        submitBtn.disabled = isLoading;
+        submitBtn.textContent = isLoading ? 'Отправляем…' : 'Отправить';
+        submitBtn.style.opacity = isLoading ? '0.7' : '1';
+    }
+
+    // Инициализация EmailJS
+    const publicKey = form.getAttribute('data-emailjs-public-key');
+    if (window.emailjs && publicKey) {
+        emailjs.init(publicKey);
+    }
+
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        const formData = new FormData(form);
-        fetch(form.action, {
-            method: 'POST',
-            body: formData,
-            headers: { 'Accept': 'application/json' }
-        })
-        .then(response => {
-            if (response.ok) {
-                form.style.display = 'none';
-                success.style.display = 'block';
-            } else {
-                response.json().then(data => {
-                    alert(data.errors ? data.errors.map(e => e.message).join(', ') : 'Ошибка отправки.');
-                });
+        if (!isFormValid()) {
+            if (errorBox) {
+                errorBox.textContent = 'Проверьте корректность заполнения полей.';
+                errorBox.style.display = 'block';
             }
-        })
-        .catch(() => {
-            alert('Ошибка сети. Попробуйте позже.');
-        });
+            return;
+        }
+
+        const serviceId = form.getAttribute('data-emailjs-service-id');
+        const templateId = form.getAttribute('data-emailjs-template-id');
+        if (!serviceId || !templateId || !window.emailjs) {
+            if (errorBox) {
+                errorBox.textContent = 'Форма временно недоступна. Попробуйте позже.';
+                errorBox.style.display = 'block';
+            }
+            return;
+        }
+
+        setLoading(true);
+        if (errorBox) errorBox.style.display = 'none';
+
+        try {
+            // Используем sendForm: EmailJS сам возьмет значения из инпутов по name
+            await emailjs.sendForm(serviceId, templateId, form);
+
+            form.style.display = 'none';
+            if (success) success.style.display = 'block';
+        } catch (err) {
+            if (errorBox) {
+                const details = (err && (err.text || err.message)) ? ` (${err.text || err.message})` : '';
+                errorBox.textContent = 'Не удалось отправить. Попробуйте позже.' + details;
+                errorBox.style.display = 'block';
+            }
+        } finally {
+            setLoading(false);
+        }
     });
-    checkValid();
 });
