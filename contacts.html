@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | УК «Соколиная гора»</title>
+    <link rel="icon" type="image/svg+xml" href="img/WhatsApp Image 2025-08-11 at 16.00.13_bd853797.png">
+    <!-- Общие стили сайта -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contacts.css">
+    <script defer src="js/main.js"></script>
+    <script defer src="js/contacts.js"></script>
+    <style>
+        html, body { height: 100%; }
+        body { min-height: 100vh; display: flex; flex-direction: column; }
+        main { flex: 1 0 auto; }
+        .footer { flex-shrink: 0; }
+        .contacts-blocks { max-width: 900px; margin: 0 auto; padding: 32px 16px; display: flex; flex-direction: column; gap: 32px; }
+        .contacts-block { background: #fff; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); padding: 32px 24px; }
+        .contacts-block h2 { font-size: 1.4rem; font-weight: 700; margin: 0; }
+        @media (max-width: 700px) {
+            .contacts-blocks { padding: 16px 4px; gap: 18px; }
+            .contacts-block { padding: 18px 8px; }
+            .contacts-block h2 { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo" title="На главную">
+            <img src="img/WhatsApp Image 2025-08-11 at 16.00.13_bd853797.png" alt="Логотип УК Соколиная гора">
+        </a>
+        <nav class="nav">
+            <button class="nav__close" aria-label="Закрыть меню" style="display:none">×</button>
+            <a href="index.html" class="logo-inmenu" tabindex="0" aria-label="На главную" style="display:none"><img src="img/WhatsApp Image 2025-08-11 at 16.00.13_bd853797.png" alt="Логотип"></a>
+            <ul class="nav__list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="houses.html">Дома</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="disclosure.html">Раскрытие информации</a></li>
+                <li><a href="useful.html">Полезное</a></li>
+                <li><a href="contacts.html" class="active">Контакты</a></li>
+            </ul>
+        </nav>
+        <a class="header__phone" href="tel:+79119203001">+7 911 920-30-01</a>
+        <button class="burger" aria-label="Открыть меню">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <main>
+        <div class="contacts-blocks fade-in">
+            <h2 class="contacts-section-title">Контакты</h2>
+            <div class="contacts-block fade-in">
+                <div class="contacts-info-text">
+                    <strong>Генеральный директор:</strong><br>
+                    Чуркин Дмитрий Сергеевич<br><br>
+                    <strong>Фактический адрес УК:</strong><br>
+                    105275, город Москва, ул. 5-я Соколиной горы, д. 25А, помещение IV, комната 6<br><br>
+                    <strong>Юридический адрес УК:</strong><br>
+                    105275, город Москва, ул. 5-я Соколиной горы, д. 25А, помещение IV, комната 6<br><br>
+                    <strong>Офис ТО Мироновский и ТО Буденного:</strong><br>
+                    ул. 5-я Соколиной Горы, д. 25А<br>
+                    <em>Режим работы:</em><br>
+                    понедельник-четверг — 9:00-18:00<br>
+                    пятница — 9:00-17:00<br>
+                    перерыв — 13:00-13:45<br>
+                    <em>График приема:</em><br>
+                    вторник, четверг — 9:00-18:00<br>
+                    перерыв — 13:00-13:45<br><br>
+                    <strong>Офис ТО Соколиная гора:</strong><br>
+                    ул. 5-я Соколиной Горы, д. 25А, этаж 2<br>
+                    <em>Режим работы:</em><br>
+                    понедельник-четверг — 9:00-18:00<br>
+                    пятница — 9:00-15:45<br>
+                    перерыв — 12:00-13:00<br>
+                    <em>График приема:</em><br>
+                    вторник, четверг — 9:00-18:00<br><br>
+                    <strong>Офис ТО Перовская:</strong><br>
+                    ул. Перовская, д. 66, к. 5 (вход рядом с магазином ХОЗМАГ)<br>
+                    понедельник-пятница — 9:00-18:00<br>
+                    перерыв — 12:00-13:00<br>
+                    <em>График приема:</em><br>
+                    вторник, четверг — 9:00-18:00<br><br>
+                    <strong>Телефоны УК:</strong><br>
+                    +7 495 125-70-00<br>
+                    +7 495 198-02-22<br><br>
+                    <strong>Email адрес для обращений клиентов:</strong><br>
+                    <a href="mailto:inform@sokol-uk.ru">inform@sokol-uk.ru</a><br><br>
+                    <strong>Email адрес для обращений СМИ:</strong><br>
+                    <a href="mailto:pressa@sokol-uk.ru">pressa@sokol-uk.ru</a>
+                </div>
+            </div>
+            <hr class="section-sep">
+            <h2 class="contacts-section-title">Карта</h2>
+            <div class="contacts-map-embed fade-in" style="display:flex; justify-content:center;">
+                <iframe src="https://yandex.ru/map-widget/v1/?ll=30.340740,59.941016&z=16&pt=30.340740,59.941016,pm2rdm" width="100%" height="360" frameborder="0" allowfullscreen style="max-width:900px; min-width:220px; border-radius:12px;"></iframe>
+            </div>
+            <hr class="section-sep">
+            <h2 class="contacts-section-title">Графики работы</h2>
+            <div class="accordion fade-in">
+                <div class="accordion__item scale-in">
+                    <button class="accordion__header" aria-expanded="false">Управляющая компания <span class="accordion__icon">▶</span></button>
+                    <div class="accordion__body">
+                        График приема: Вторник, Четверг 09-00 - 18-00
+                    </div>
+                </div>
+                <div class="accordion__item scale-in">
+                    <button class="accordion__header" aria-expanded="false">Единый расчетный центр <span class="accordion__icon">▶</span></button>
+                    <div class="accordion__body">
+                        ГБУ МФЦ района Соколиная гора города Москвы<br>
+                        г. Москва, ул. Б. Семеновская д.23А<br>
+                        Ежедневно с 8.00-20.00.<br>
+                        Телефон: 8 495 777 77 77
+                    </div>
+                </div>
+                <div class="accordion__item scale-in">
+                    <button class="accordion__header" aria-expanded="false">Паспортный стол <span class="accordion__icon">▶</span></button>
+                    <div class="accordion__body">
+                        ГБУ МФЦ района Соколиная гора города Москвы<br>
+                        г. Москва, ул. Б. Семеновская д.23А<br>
+                        Ежедневно с 8.00-20.00.<br>
+                        Телефон: 8 495 777 77 77
+                    </div>
+                </div>
+                <div class="accordion__item scale-in">
+                    <button class="accordion__header" aria-expanded="false">Диспетчерская <span class="accordion__icon">▶</span></button>
+                    <div class="accordion__body">
+                        ОДС-1 (круглосуточно) 5-я ул. Соколиной горы, д.25А<br>
+                        ОДС-3 (круглосуточно) Измайловское шоссе, д.15 к.2<br>
+                        ОДС-26 (круглосуточно) Вольная улица, д.3<br>
+                        РДС (круглосуточно)
+                    </div>
+                </div>
+            </div>
+            <hr class="section-sep">
+            <h2 class="contacts-section-title">Реквизиты</h2>
+            <div class="contacts-block fade-in">
+                <div class="requisites-table-wrap">
+                    <table class="requisites-table" style="width:100%; max-width:600px; margin:0 auto; border-collapse:collapse; font-size:1.05rem;">
+                        <tbody>
+                            <tr><td>Номер счета</td><td>40702810532230007182</td></tr>
+                            <tr><td>Валюта</td><td>RUB</td></tr>
+                            <tr><td>Название</td><td>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "СК КОМПАНИЯ ИНЖЕНЕРНЫХ ТЕХНОЛОГИЙ"</td></tr>
+                            <tr><td>ИНН</td><td>7801742800</td></tr>
+                            <tr><td>КПП</td><td>780101001</td></tr>
+                            <tr><td>Банк</td><td>ФИЛИАЛ "САНКТ-ПЕТЕРБУРГСКИЙ" АО "АЛЬФА-БАНК"</td></tr>
+                            <tr><td>БИК</td><td>044030786</td></tr>
+                            <tr><td>Кор. счёт</td><td>30101810600000000786</td></tr>
+                            <tr><td>Адрес получателя</td><td>линия 17-я В.О., д. 70/12, корп./ст. А, кв./оф. 35, г.Санкт-Петербург</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__links">
+            <a href="#">Согласие на обработку персональных данных</a> |
+            <a href="#">Политика конфиденциальности</a>
+        </div>
+        <div class="footer__copyright">
+            © 2025<br>
+            Общество с ограниченной ответственностью «Управляющая компания муниципального района «Соколиная гора»<br>
+            г. Москва, ул. 5-я Соколиной горы, д. 25А, помещение IV, комната 6<br>
+            +7 495 125-70-00
+        </div>
+    </footer>
+    <button class="scroll-top" aria-label="Наверх">↑</button>
+</body>
+</html>

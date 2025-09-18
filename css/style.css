@@ -1,0 +1,640 @@
+/*
+    style.css — основной файл стилей сайта УК «Соколиная гора»
+    Здесь описаны все базовые стили, адаптивность, анимации и оформление общих компонентов.
+    Каждый логический блок снабжён подробными комментариями для удобства редактирования.
+*/
+
+/* ================== СБРОС СТИЛЕЙ ================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #fff;
+    color: #222;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+/* ========== Горизонтальные разделители между секциями ========== */
+.section-sep {
+    border: none;
+    border-top: 1.5px solid #e5e5e5;
+    margin: 0 auto 0px auto;
+    max-width: 900px;
+    opacity: 0.7;
+}
+
+/* ================== ШАПКА ================== */
+.header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 64px;
+    background: #fff;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    padding: 0 32px;
+}
+.logo img {
+    height: 40px;
+    width: auto;
+}
+.nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav__list {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    align-items: center;
+}
+.nav__list a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+.nav__list a:hover, .nav__list a:focus {
+    color: #0057b8;
+    background: #f2f4f8;
+}
+.nav__list a.active {
+    color: #fff;
+    background: #0057b8;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(0,87,184,0.08);
+}
+.header__phone {
+    color: #222;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-left: 32px;
+    transition: color 0.2s;
+}
+.header__phone:hover {
+    color: #0057b8;
+}
+
+/* ================== БУРГЕР-МЕНЮ (адаптивное) ================== */
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+    transition: background 0.2s;
+}
+.burger span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background: #222;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+.burger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+.burger.active span:nth-child(3) {
+    transform: translateY(-13.5px) rotate(-45deg);
+}
+
+/* ================== ГЛАВНЫЙ КОНТЕНТ ================== */
+main {
+    padding-top: 80px; /* отступ под фиксированную шапку */
+}
+
+/* ========== Блок: Приветствие (hero) ========== */
+.hero {
+    position: relative;
+    min-height: 60vh;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+}
+.hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 1;
+}
+.hero__content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    animation: fadeInUp 1.2s cubic-bezier(.23,1.01,.32,1) both;
+}
+.hero__content h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.hero__content p {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: none; }
+}
+
+/* ========== Блок: Электронное обращение ========== */
+.appeal {
+    padding: 48px 0 32px 0;
+    text-align: center;
+}
+.appeal__button {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 12px 32px;
+    background: #0057b8;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.appeal__button:hover {
+    background: #003a75;
+}
+
+/* ========== Блок: Наши функции ========== */
+.functions {
+    padding: 48px 0 32px 0;
+    text-align: center;
+}
+.functions__cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px 24px;
+    justify-content: center;
+    margin-top: 24px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.function-card {
+    background: #f7f7f7;
+    border-radius: 16px;
+    padding: 32px 24px;
+    min-width: 220px;
+    max-width: 320px;
+    flex: 1 1 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.function-card:hover {
+    box-shadow: 0 4px 16px rgba(0,87,184,0.08);
+    transform: translateY(-2px) scale(1.03);
+}
+.function-card__icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+}
+.function-card__title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* ========== Блок: Новости ========== */
+.news {
+    padding: 48px 0 32px 0;
+    text-align: center;
+}
+.news__list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    margin-top: 24px;
+}
+.news-item {
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 24px 20px;
+    max-width: 650px;
+    width: 100%;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.news-item__date {
+    font-size: 0.95rem;
+    color: #888;
+    margin-bottom: 6px;
+}
+.news-item__title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.news-item__text {
+    font-size: 1rem;
+    color: #333;
+}
+
+/* ========== Длинный фейковый блок для увеличения высоты страницы ========== */
+.long-block {
+    height: 400px;
+    background: #f2f4f8;
+    margin: 48px auto 0 auto;
+    max-width: 700px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 1.3rem;
+}
+
+/* ================== ПОДВАЛ ================== */
+.footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 32px 16px 24px 16px;
+    font-size: 0.98rem;
+}
+.footer__links {
+    margin-bottom: 12px;
+}
+.footer__links a {
+    color: #fff;
+    text-decoration: underline;
+    margin: 0 4px;
+    font-size: 0.98rem;
+}
+.footer__links a:hover {
+    color: #0057b8;
+}
+.footer__copyright {
+    margin-top: 8px;
+    line-height: 1.6;
+}
+
+/* ================== КНОПКА "ВВЕРХ" ================== */
+.scroll-top {
+    position: fixed;
+    right: 24px;
+    bottom: 32px;
+    width: 48px;
+    height: 48px;
+    background: #0057b8;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 2rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    cursor: pointer;
+    z-index: 1200;
+    transition: background 0.2s, opacity 0.2s;
+    opacity: 0.85;
+}
+.scroll-top:hover {
+    background: #003a75;
+    opacity: 1;
+}
+.scroll-top.visible {
+    display: flex;
+}
+
+/* ================== АДАПТИВНОСТЬ ================== */
+@media (max-width: 900px) {
+    .header {
+        padding: 0 12px;
+    }
+    .nav__list {
+        gap: 18px;
+    }
+    .functions__cards {
+        gap: 16px 8px;
+    }
+}
+
+@media (max-width: 1080px) {
+    .nav {
+        display: none;
+    }
+    .burger {
+        display: flex;
+    }
+    .nav.open {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: #fff;
+        z-index: 2000;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        animation: menuFadeIn 0.3s cubic-bezier(.4,0,.2,1);
+        justify-content: center;
+        gap: 32px;
+    }
+    .nav__list {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+        width: 100vw;
+    }
+    .nav.open .header__phone--inmenu {
+        display: block;
+        margin: 32px auto 0 auto;
+        text-align: center;
+        font-size: 1.2rem;
+        color: #0057b8;
+        font-weight: 700;
+    }
+    .header__phone {
+        display: none;
+    }
+}
+@keyframes menuFadeIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to   { opacity: 1; transform: none; }
+}
+@media (max-width: 700px) {
+    .header {
+        height: 56px;
+    }
+    .logo img {
+        height: 32px;
+    }
+    .nav__list {
+        gap: 10px;
+        font-size: 0.98rem;
+    }
+    .footer {
+        font-size: 0.92rem;
+    }
+    .functions__cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+    .function-card {
+        min-width: 0;
+        width: 90vw;
+        max-width: 400px;
+    }
+    .hero__content h1 {
+        font-size: 1.5rem;
+    }
+    .hero__content p {
+        font-size: 1.05rem;
+    }
+}
+@media (max-width: 600px) {
+    .header {
+        padding: 0 4px;
+    }
+    .nav {
+        display: none;
+    }
+    .header__phone {
+        display: none;
+    }
+    .burger {
+        display: flex;
+    }
+    .nav.open {
+        display: flex;
+        position: fixed;
+        top: 56px;
+        left: 0; right: 0;
+        background: #fff;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 32px 0 24px 0;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+        z-index: 1050;
+        animation: menuFadeIn 0.25s;
+    }
+    @keyframes menuFadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to   { opacity: 1; transform: none; }
+    }
+    .nav__list {
+        flex-direction: column;
+        gap: 18px;
+        width: 100vw;
+        align-items: center;
+    }
+    main {
+        padding-top: 64px;
+    }
+    .functions__cards {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .news__list {
+        align-items: stretch;
+    }
+    .hero__content h1 {
+        font-size: 2rem;
+    }
+    .hero__content p {
+        font-size: 1rem;
+    }
+}
+
+/* Унификация ширины основных блоков */
+.main-block, .functions__cards, .news__list, .accordion, .requisites, .contacts__main, .contacts__info, .contacts__map {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+/* Внутренние отступы для аккордеонов и новостей */
+.accordion__body, .news-item {
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+/* ========== Аккуратные стили для ссылок в новостях и аккордеоне ========== */
+.news__list a, .accordion__body a {
+    color: #4f93ff;
+    transition: color 0.2s;
+    word-break: break-all;
+    text-decoration: none;
+}
+.news__list a:hover, .accordion__body a:hover {
+    color: #003a75;
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    .main-block, .functions__cards, .news__list, .accordion, .requisites, .contacts__main, .contacts__info, .contacts__map {
+        max-width: 98vw;
+    }
+}
+@media (max-width: 600px) {
+    .main-block, .functions__cards, .news__list, .accordion, .requisites, .contacts__main, .contacts__info, .contacts__map {
+        max-width: 95vw;
+        padding-left: 2vw;
+        padding-right: 2vw;
+    }
+    .accordion__body, .news-item {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+/* Бургер-меню: телефон внутри меню при сужении */
+@media (max-width: 600px) {
+    .header__phone {
+        display: none;
+    }
+    .nav.open + .header__phone {
+        display: block;
+        margin: 0px 0 0 0;
+        text-align: center;
+        font-size: 1.1rem;
+        color: #0057b8;
+        font-weight: 700;
+    }
+}
+
+.nav__close {
+    display: none;
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    font-size: 2.2rem;
+    background: none;
+    border: none;
+    color: #222;
+    cursor: pointer;
+    z-index: 2100;
+    transition: color 0.2s, transform 0.2s;
+}
+.nav__close:hover {
+    color: #0057b8;
+    transform: scale(1.15) rotate(90deg);
+}
+@media (max-width: 900px) {
+    .nav__close {
+        display: none;
+    }
+    .nav.open .nav__close {
+        display: block;
+    }
+}
+
+.logo-inmenu {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 32px auto 0 auto;
+    width: 64px;
+    height: 64px;
+    cursor: pointer;
+}
+.nav.open .logo-inmenu {
+    display: flex;
+}
+@media (max-width: 900px) {
+    .logo-inmenu {
+        display: none;
+    }
+    .nav.open .logo-inmenu {
+        display: flex;
+    }
+}
+
+/* ========== АНИМАЦИИ ПРИ ПРОКРУТКЕ ================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}

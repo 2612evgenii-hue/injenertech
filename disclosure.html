@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раскрытие информации | УК «Соколиная гора»</title>
+    <link rel="icon" type="image/svg+xml" href="img/WhatsApp Image 2025-08-11 at 16.00.13_bd853797.png">
+    <!-- Общие стили сайта -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Стили только для этой страницы -->
+    <link rel="stylesheet" href="css/disclosure.css">
+    <!-- Общий JS -->
+    <script defer src="js/main.js"></script>
+    <script defer src="js/disclosure.js"></script>
+</head>
+<body>
+    <!-- ================== ШАПКА (header) ================== -->
+    <header class="header">
+        <a href="index.html" class="logo" title="На главную">
+            <img src="img/WhatsApp Image 2025-08-11 at 16.00.13_bd853797.png" alt="Логотип УК Соколиная гора">
+        </a>
+        <nav class="nav">
+            <button class="nav__close" aria-label="Закрыть меню" style="display:none">×</button>
+            <a href="index.html" class="logo-inmenu" tabindex="0" aria-label="На главную" style="display:none"><img src="img/WhatsApp Image 2025-08-11 at 16.00.13_bd853797.png" alt="Логотип"></a>
+            <ul class="nav__list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="houses.html">Дома</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="disclosure.html" class="active">Раскрытие информации</a></li>
+                <li><a href="useful.html">Полезное</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <a class="header__phone" href="tel:+79119203001">+7 911 920-30-01</a>
+        <button class="burger" aria-label="Открыть меню">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <!-- ================== КОНЕЦ ШАПКИ ================== -->
+
+    <main>
+        <section class="disclosure fade-in">
+            <h1 class="disclosure__title">Раскрытие информации</h1>
+            <div class="accordion fade-in">
+                <!-- Пример раскрывающегося блока -->
+                <div class="accordion__item">
+                    <button class="accordion__header" aria-expanded="false">
+                        Лицензии и свидетельства <span class="accordion__icon">&#9654;</span>
+                    </button>
+                    <div class="accordion__body">
+                        <ul>
+                            <li>Лицензия УК № 077 001826 от 09.07.2019г.</li>
+                            <li>Свидетельство ИНН</li>
+                            <li>Свидетельство ОГРН</li>
+                            <li>Свидетельство СРО от 10.11.2009</li>
+                            <li>Свидетельство о внесении в единый реестр управления МКД от 14.10.2015</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Добавляйте новые блоки ниже по аналогии -->
+            </div>
+        </section>
+    </main>
+
+    <!-- ================== ПОДВАЛ (footer) ================== -->
+    <footer class="footer">
+        <div class="footer__links">
+            <a href="#">Согласие на обработку персональных данных</a> |
+            <a href="#">Политика конфиденциальности</a>
+        </div>
+        <div class="footer__copyright">
+            © 2025<br>
+            Общество с ограниченной ответственностью «Управляющая компания муниципального района «Соколиная гора»<br>
+            г. Москва, ул. 5-я Соколиной горы, д. 25А, помещение IV, комната 6<br>
+            +7 495 125-70-00
+        </div>
+    </footer>
+    <!-- Кнопка "вверх" -->
+    <button class="scroll-top" aria-label="Наверх">↑</button>
+</body>
+</html>

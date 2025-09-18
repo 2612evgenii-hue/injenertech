@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Минималистичный логотип: стилизованная гора и дом -->
+  <g>
+    <polygon points="8,56 32,16 56,56" fill="#0057b8"/>
+    <rect x="26" y="40" width="12" height="16" fill="#fff"/>
+    <rect x="30" y="48" width="4" height="8" fill="#0057b8"/>
+  </g>
+</svg>

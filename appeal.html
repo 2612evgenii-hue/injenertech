@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Электронное обращение | УК «Соколиная гора»</title>
+    <link rel="icon" type="image/svg+xml" href="img/WhatsApp Image 2025-08-11 at 16.00.13_bd853797.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/appeal.css">
+    <script defer src="js/main.js"></script>
+    <script defer src="js/appeal.js"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo" title="На главную">
+            <img src="img/WhatsApp Image 2025-08-11 at 16.00.13_bd853797.png" alt="Логотип УК Соколиная гора">
+        </a>
+        <nav class="nav">
+            <button class="nav__close" aria-label="Закрыть меню" style="display:none">×</button>
+            <a href="index.html" class="logo-inmenu" tabindex="0" aria-label="На главную" style="display:none"><img src="img/WhatsApp Image 2025-08-11 at 16.00.13_bd853797.png" alt="Логотип"></a>
+            <ul class="nav__list">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="houses.html">Дома</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="disclosure.html">Раскрытие информации</a></li>
+                <li><a href="useful.html">Полезное</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <a class="header__phone" href="tel:+79119203001">+7 911 920-30-01</a>
+        <button class="burger" aria-label="Открыть меню">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <main>
+        <section class="appeal-form main-block fade-in">
+            <h1>Электронное обращение</h1>
+            <form id="appealForm" action="https://formspree.io/f/xdoqzqzv" method="POST" autocomplete="off" class="scale-in">
+                <label>
+                    ФИО*
+                    <input type="text" name="fio" required>
+                </label>
+                <label>
+                    Email*
+                    <input type="email" name="email" required>
+                </label>
+                <label>
+                    Телефон*
+                    <input type="tel" name="phone" required pattern="[\d\+\-\s\(\)]{7,}">
+                </label>
+                <label>
+                    Адрес*
+                    <input type="text" name="address" required>
+                </label>
+                <label>
+                    Сообщение*
+                    <textarea name="message" required rows="4"></textarea>
+                </label>
+                <button type="submit">Отправить</button>
+            </form>
+            <div id="appealSuccess" style="display:none; text-align:center; margin-top:24px; color:green;">Ваше обращение отправлено!</div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__links">
+            <a href="#">Согласие на обработку персональных данных</a> |
+            <a href="#">Политика конфиденциальности</a>
+        </div>
+        <div class="footer__copyright">
+            © 2025<br>
+            Общество с ограниченной ответственностью «Управляющая компания муниципального района «Соколиная гора»<br>
+            г. Москва, ул. 5-я Соколиной горы, д. 25А, помещение IV, комната 6<br>
+            +7 495 125-70-00
+        </div>
+    </footer>
+    <button class="scroll-top" aria-label="Наверх">↑</button>
+</body>
+</html>

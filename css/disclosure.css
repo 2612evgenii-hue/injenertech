@@ -1,0 +1,119 @@
+/*
+    disclosure.css — стили только для страницы 'Раскрытие информации'
+    Оформление аккордеона, адаптивность, сетка.
+    Общие стили (шапка, подвал, бургер-меню, кнопка вверх) берутся из style.css
+*/
+
+html, body {
+    height: 100%;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+    padding-top: 80px;
+    background: #fafbfc;
+}
+.footer {
+    flex-shrink: 0;
+}
+
+.disclosure, .accordion {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    min-width: 0;
+}
+.disclosure__title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    letter-spacing: 0.01em;
+}
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.accordion__item {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    overflow: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+.accordion__header {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding: 20px 24px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: background 0.15s;
+    justify-content: space-between;
+}
+.accordion__header:hover, .accordion__header[aria-expanded="true"] {
+    background: #f2f4f8;
+}
+.accordion__icon {
+    font-size: 1.2rem;
+    transition: transform 0.2s;
+    margin-left: 16px;
+    margin-right: 0;
+}
+.accordion__header[aria-expanded="true"] .accordion__icon {
+    transform: rotate(90deg);
+}
+.accordion__body {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 24px 0 48px;
+    font-size: 1.05rem;
+    color: #222;
+    transition: max-height 0.4s cubic-bezier(.4,0,.2,1), padding 0.3s;
+    text-align: left;
+}
+.accordion__header[aria-expanded="true"] + .accordion__body {
+    max-height: 400px;
+    padding: 0 24px 20px 48px;
+}
+
+@media (max-width: 700px) {
+    .disclosure {
+        padding: 32px 4px 24px 4px;
+    }
+    .disclosure__title {
+        font-size: 1.5rem;
+    }
+    .accordion__header {
+        font-size: 1rem;
+        padding: 14px 10px;
+    }
+    .accordion__body {
+        padding: 0 10px 0 16px;
+        font-size: 0.98rem;
+    }
+    .accordion__item {
+        max-width: 99vw;
+    }
+    .accordion__header[aria-expanded="true"] + .accordion__body {
+        padding: 0 10px 14px 16px;
+    }
+}

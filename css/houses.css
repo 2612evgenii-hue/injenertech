@@ -1,0 +1,91 @@
+/*
+    houses.css — стили только для страницы 'Дома'
+    Здесь описано оформление списка районов и адресов, а также адаптивность.
+    Общие стили (шапка, подвал, бургер-меню, кнопка вверх) берутся из style.css
+*/
+
+html, body {
+    height: 100%;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+    padding-top: 35px;
+    min-height: 70vh;
+    background: #fafbfc;
+}
+.footer {
+    flex-shrink: 0;
+}
+
+.houses {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 48px 16px 32px 16px;
+}
+.houses__title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    letter-spacing: 0.01em;
+}
+
+.district {
+    margin-bottom: 40px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    padding: 32px 24px 24px 24px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.district__name {
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+.district__line {
+    height: 2px;
+    background: #0057b8;
+    width: 60px;
+    margin: 0 auto 18px auto;
+    border-radius: 2px;
+}
+.district__addresses {
+    list-style: none;
+    padding-left: 0;
+    text-align: center;
+}
+.district__addresses li {
+    font-size: 1.08rem;
+    margin-bottom: 8px;
+    color: #222;
+    padding: 4px 0;
+}
+
+/* ========== Адаптивность ========== */
+@media (max-width: 700px) {
+    .houses {
+        padding: 32px 4px 24px 4px;
+    }
+    .district {
+        padding: 16px 4vw 12px 4vw;
+        max-width: 98vw;
+    }
+    .houses__title {
+        font-size: 1.5rem;
+    }
+    .district__name {
+        font-size: 1.08rem;
+    }
+    .district__addresses li {
+        font-size: 0.98rem;
+    }
+}

@@ -1,0 +1,76 @@
+/* appeal.css — стили только для страницы обращения */
+.appeal-form {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    margin: 48px auto 32px auto;
+    padding: 40px 32px 32px 32px;
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.appeal-form h1 {
+    font-size: 2rem;
+    margin-bottom: 32px;
+    text-align: center;
+}
+#appealForm {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+#appealForm label {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.08rem;
+    color: #222;
+    margin-bottom: 2px;
+}
+#appealForm input, #appealForm textarea {
+    margin-top: 6px;
+    padding: 10px 12px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: none;
+}
+#appealForm input:focus, #appealForm textarea:focus {
+    outline: 2px solid #0057b8;
+    border-color: #0057b8;
+}
+#submitBtn {
+    margin-top: 18px;
+    padding: 12px 0;
+    background: #0057b8;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+    opacity: 0.7;
+}
+#submitBtn:enabled {
+    opacity: 1;
+}
+#submitBtn:disabled {
+    cursor: not-allowed;
+    background: #b3c6e0;
+}
+@media (max-width: 700px) {
+    .appeal-form {
+        padding: 18px 4vw 18px 4vw;
+        margin: 24px auto 16px auto;
+    }
+    .appeal-form h1 {
+        font-size: 1.3rem;
+    }
+    #appealForm {
+        max-width: 99vw;
+    }
+}

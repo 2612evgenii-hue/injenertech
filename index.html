@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Мета-теги для адаптивности и кодировки -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Заголовок сайта -->
+    <title>УК «Соколиная гора»</title>
+    <!-- Favicon (логотип) -->
+    <link rel="icon" type="image/svg+xml" href="img/WhatsApp Image 2025-08-11 at 16.00.13_bd853797.png">
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/houses.css">
+    <!-- Подключение скриптов -->
+    <script defer src="js/main.js"></script>
+</head>
+<body>
+    <!-- ================== ШАПКА (header) ================== -->
+    <header class="header">
+        <!-- Логотип слева -->
+        <a href="index.html" class="logo" title="На главную">
+            <!-- SVG логотип или картинка -->
+            <img src="img/WhatsApp Image 2025-08-11 at 16.00.13_bd853797.png" alt="Логотип УК Соколиная гора">
+        </a>
+        <!-- Меню по центру -->
+        <nav class="nav">
+            <button class="nav__close" aria-label="Закрыть меню" style="display:none">×</button>
+            <a href="index.html" class="logo-inmenu" tabindex="0" aria-label="На главную" style="display:none"><img src="img/WhatsApp Image 2025-08-11 at 16.00.13_bd853797.png" alt="Логотип"></a>
+            <ul class="nav__list">
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="houses.html">Дома</a></li>
+                <li><a href="services.html">Услуги</a></li>
+                <li><a href="disclosure.html">Раскрытие информации</a></li>
+                <li><a href="useful.html">Полезное</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+        <!-- Телефон справа -->
+        <a class="header__phone" href="tel:+79119203001">+7 911 920-30-01</a>
+        <!-- Бургер-меню для мобильных -->
+        <button class="burger" aria-label="Открыть меню">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+    <!-- ================== КОНЕЦ ШАПКИ ================== -->
+
+    <!-- ================== ОСНОВНОЙ КОНТЕНТ ================== -->
+    <main>
+        <!-- Блок 2: Приветствие с фоновым изображением и анимацией -->
+        <section class="hero fade-in">
+            <img src="img/rasshirenie-zhilya-maloimuschim-semyam.jpg" alt="Семья на фоне домов" class="hero__bg" loading="lazy">
+            <div class="hero__overlay"></div>
+            <div class="hero__content">
+                <h1>Вы живёте — мы заботимся.</h1>
+                <p>Спокойствие начинается с <br> надёжного сервиса</p>
+            </div>
+        </section>
+        <!-- Блок 3: Электронное обращение -->
+        <section class="appeal main-block fade-in">
+            <h2>Электронное обращение</h2>
+            <a href="appeal.html" class="appeal__button">Отправить обращение</a>
+        </section>
+        <hr class="section-sep">
+        <!-- Блок 4: Наши функции -->
+        <section class="functions fade-in">
+            <h2>Наши функции</h2>
+            <div class="functions__cards">
+                <!-- Карточки функций, редактируются в HTML -->
+                <div class="function-card scale-in">
+                    <div class="function-card__icon">🔧</div>
+                    <div class="function-card__title">Обслуживание и ремонт инженерных систем дома</div>
+                </div>
+                <div class="function-card scale-in">
+                    <div class="function-card__icon">💧</div>
+                    <div class="function-card__title">Контроль подачи коммунальных ресурсов</div>
+                </div>
+                <div class="function-card scale-in">
+                    <div class="function-card__icon">🧹</div>
+                    <div class="function-card__title">Уборка и ремонт мест общего пользования</div>
+                </div>
+                <div class="function-card scale-in">
+                    <div class="function-card__icon">🏗️</div>
+                    <div class="function-card__title">Текущий ремонт фасадов и кровли</div>
+                </div>
+                <div class="function-card scale-in">
+                    <div class="function-card__icon">📞</div>
+                    <div class="function-card__title">Круглосуточный контакт-центр</div>
+                </div>
+                <div class="function-card scale-in">
+                    <div class="function-card__icon">🚨</div>
+                    <div class="function-card__title">Обеспечение работы круглосуточной аварийной службы</div>
+                </div>
+            </div>
+        </section>
+        <hr class="section-sep">
+        <!-- Блок 5: Новости -->
+        <section class="news fade-in" id="news">
+            <h2>Новости</h2>
+            <div class="news__list">
+                <!-- Пример новости. Добавлять новые вручную -->
+                <article class="news-item slide-in-left">
+                    <div class="news-item__date">01.06.2024</div>
+                    <div class="news-item__title">Запущен новый сайт УК «Соколиная гора»</div>
+                    <div class="news-item__text">Мы рады приветствовать вас на нашем новом сайте! Здесь вы найдёте всю необходимую информацию о нашей работе, услугах и новостях района.</div>
+                </article>
+                <!-- Добавляйте новые новости ниже -->
+            </div>
+        </section>
+    </main>
+    <!-- ================== КОНЕЦ ОСНОВНОГО КОНТЕНТА ================== -->
+
+    <!-- ================== ПОДВАЛ (footer) ================== -->
+    <footer class="footer">
+        <div class="footer__links">
+            <a href="#">Согласие на обработку персональных данных</a> |
+            <a href="#">Политика конфиденциальности</a>
+        </div>
+        <div class="footer__copyright">
+            © 2025<br>
+            Общество с ограниченной ответственностью «Управляющая компания муниципального района «Соколиная гора»<br>
+            г. Москва, ул. 5-я Соколиной горы, д. 25А, помещение IV, комната 6<br>
+            +7 495 125-70-00
+        </div>
+    </footer>
+    <!-- ================== КОНЕЦ ПОДВАЛА ================== -->
+
+    <!-- Кнопка "вверх" -->
+    <button class="scroll-top" aria-label="Наверх">↑</button>
+</body>
+</html>
